@@ -1,0 +1,110 @@
+/* ==========================================================================
+    1. 基础重置：消除网页感，锁定全屏
+    ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* 禁用长按菜单与文字选中，更像原生 App */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    /* 移除点击高亮灰色背景 */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* 极其重要：禁止外层网页滚动，防止微信/Safari下拉露底 */
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+    background-color: #f2f2f7; /* 苹果经典的系统背景灰色 */
+    color: #1c1c1e;
+}
+
+body {
+    display: flex;
+    flex-direction: column; /* 垂直由上至下排列：Header -> Content -> Footer */
+}
+
+/* ==========================================================================
+    2. 核心组件布局与 iPhone 安全区域适配
+    ========================================================================== */
+
+/* 顶部状态栏：适配刘海屏、灵动岛 */
+.app-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e5ea;
+    /* 关键：自动留出 iPhone 顶部的安全距离（刘海高度） */
+    padding-top: env(safe-area-inset-top); 
+    flex-shrink: 0; /* 防止被挤压 */
+}
+.header-title {
+    height: 44px; /* 苹果标准的导航栏高度 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+/* 中间内容区：独立滚动 */
+.app-content {
+    flex: 1; /* 自动撑满中间剩余的所有空间 */
+    overflow-y: auto; /* 允许垂直滚动 */
+    -webkit-overflow-scrolling: touch; /* 启用 iOS 原生滚动惯性，非常丝滑 */
+    padding: 16px;
+}
+
+/* 底部标签栏：适配底部小黑条（Home Indicator） */
+.app-footer {
+    background-color: #ffffff;
+    border-top: 1px solid #e5e5ea;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-shrink: 0; /* 防止被挤压 */
+    
+    /* 关键：自动留出 iPhone 底部小黑条的安全距离 */
+    padding-bottom: env(safe-area-inset-bottom); 
+}
+.footer-item {
+    height: 49px; /* 苹果标准的 TabBar 高度 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: #8e8e93;
+    width: 100%;
+}
+.footer-item.active {
+    color: #007aff; /* 苹果自带的蓝色高亮 */
+    font-weight: 500;
+}
+
+/* ==========================================================================
+    3. UI 元素：iOS 风格的卡片和按钮设计
+    ========================================================================== */
+.card {
+    background: #ffffff;
+    border-radius: 12px; /* 苹果生态常用的圆角 */
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.app-btn {
+    width: 100%;
+    min-height: 44px; /* 满足苹果最低 44x44 像素点击区域的要求 */
+    background-color: #007aff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.app-btn:active {
+    opacity: 0.8; /* 模拟点击时的反馈变暗效果 */
+}
