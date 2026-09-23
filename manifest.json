@@ -1,6 +1,6 @@
 {
-  "name": "我的全称应用名称",
-  "short_name": "桌面图标名称",
+  "name": "XInvest",
+  "short_name": "XInvest",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#ffffff",
