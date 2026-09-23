@@ -2,6 +2,27 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8">
+        <!-- 关联刚才创建的 PWA 配置文件 -->
+        <link rel="manifest" href="manifest.json">
+
+        <!-- 开启 iOS 上的全屏模式（隐藏 Safari 栏） -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <!-- 设置状态栏颜色（可选 default / black / black-translucent） -->
+        <meta name="apple-mobile-web-app-status-bar-style" content="default">
+        <!-- 设置苹果专属的桌面图标（直接把图标设为苹果可识别的快捷图标） -->
+        <link rel="apple-touch-icon" href="icon-192.png">
+
+        <!-- 注册 Service Worker 的脚本 -->
+        <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./sw.js')
+                .then(reg => console.log('Service Worker 注册成功！', reg.scope))
+                .catch(err => console.log('Service Worker 注册失败：', err));
+            });
+        }
+        </script>
+
     </head>
     <body>
         <h1>Hello 世界</h1>
