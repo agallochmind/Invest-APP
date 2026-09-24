@@ -87,7 +87,7 @@ body {
     3. UI 元素：iOS 风格的卡片和按钮设计
     ========================================================================== */
 .card {
-    background: #ffffff;
+    background: #222;
     border-radius: 4px; /* 苹果生态常用的圆角 */
     padding: 4px;
     margin-bottom: 16px;
