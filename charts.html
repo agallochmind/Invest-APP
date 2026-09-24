@@ -16,8 +16,6 @@
 
       <script type="text/javascript" src="lightweight-charts.standalone.production.js"></script>
       <script type="text/javascript" src="generate_data.js"></script>
-      <script src="kline_data.js"></script>
-      <script src="area_data.js"></script>
       <link rel="stylesheet" href="style.css">
 
   </head>
@@ -60,13 +58,6 @@
           chart.timeScale().applyOptions({
               borderColor: '#71649C',
           });
-
-          const areaSeries = chart.addSeries(LightweightCharts.AreaSeries, {
-              lineColor: '#2962FF', 
-              topColor: '#2962FF',
-              bottomColor: 'rgba(41, 98, 255, 0.28)',
-          });
-          areaSeries.setData(window.area_data);
 
           const candlestickSeries = chart.addSeries(LightweightCharts.CandlestickSeries, {
               upColor: '#26a69a', 
