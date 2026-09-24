@@ -53,7 +53,7 @@ body {
     flex: 1; /* 自动撑满中间剩余的所有空间 */
     overflow-y: auto; /* 允许垂直滚动 */
     -webkit-overflow-scrolling: touch; /* 启用 iOS 原生滚动惯性，非常丝滑 */
-    padding: 16px;
+    padding: 4px 0px;
 }
 
 /* 底部标签栏：适配底部小黑条（Home Indicator） */
@@ -88,8 +88,8 @@ body {
     ========================================================================== */
 .card {
     background: #ffffff;
-    border-radius: 12px; /* 苹果生态常用的圆角 */
-    padding: 16px;
+    border-radius: 4px; /* 苹果生态常用的圆角 */
+    padding: 4px;
     margin-bottom: 16px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
