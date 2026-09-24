@@ -6,26 +6,17 @@
 
       <!-- iPhone 窗口适配设置-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-      <!-- 关联刚才创建的 PWA 配置文件 -->
-      <link rel="manifest" href="manifest.json">
       <!-- 开启 iOS 上的全屏模式（隐藏 Safari 栏） -->
       <meta name="apple-mobile-web-app-capable" content="yes">
       <!-- 设置状态栏颜色（可选 default / black / black-translucent） -->
       <meta name="apple-mobile-web-app-status-bar-style" content="default">
       <!-- 设置苹果专属的桌面图标（直接把图标设为苹果可识别的快捷图标） -->
       <link rel="apple-touch-icon" href="icon-192.png">
-      <!-- 注册 Service Worker 的脚本 -->
-      <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-            navigator.serviceWorker.register('./sw.js')
-                .then(reg => console.log('Service Worker 注册成功！', reg.scope))
-                .catch(err => console.log('Service Worker 注册失败：', err));
-            });
-        }
-      </script>
+
 
       <script src="lightweight-charts.standalone.production.js"></script>
+      <script src="kline_data.js"></script>
+      <script src="area_data.js"></script>
       <link rel="stylesheet" href="style.css">
 
   </head>
@@ -43,6 +34,27 @@
         <div id="chart-container"></div>
 
         <script>
+          const chartOptions = { layout: { textColor: 'black', background: { type: 'solid', color: 'white' } } };
+          const chart = LightweightCharts.createChart(document.getElementById('chart-container'), chartOptions);
+          const areaSeries = chart.addSeries(LightweightCharts.AreaSeries, {
+              lineColor: '#2962FF', 
+              topColor: '#2962FF',
+              bottomColor: 'rgba(41, 98, 255, 0.28)',
+          });
+          areaSeries.setData(window.area_data);
+
+          const candlestickSeries = chart.addSeries(LightweightCharts.CandlestickSeries, {
+              upColor: '#26a69a', 
+              downColor: '#ef5350', 
+              borderVisible: false,
+              wickUpColor: '#26a69a', 
+              wickDownColor: '#ef5350',
+          });
+
+          // 读取kline_data.csv文件中的数据，设置为蜡烛图数据
+          candlestickSeries.setData(window.kline_data);
+
+          chart.timeScale().fitContent();
         </script>
       </div>
     </main>
