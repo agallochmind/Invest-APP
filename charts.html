@@ -15,6 +15,7 @@
 
 
       <script type="text/javascript" src="lightweight-charts.standalone.production.js"></script>
+      <script type="text/javascript" src="generate_data.js"></script>
       <script src="kline_data.js"></script>
       <script src="area_data.js"></script>
       <link rel="stylesheet" href="style.css">
@@ -32,6 +33,8 @@
       <div class="card">
         <!-- 2. 准备一个用于挂载图表的 DOM 容器 -->
         <div id="chart-container"></div>
+      </div>
+
 
         <script>
           const chart = LightweightCharts.createChart(
@@ -58,8 +61,6 @@
               borderColor: '#71649C',
           });
 
-
-
           const areaSeries = chart.addSeries(LightweightCharts.AreaSeries, {
               lineColor: '#2962FF', 
               topColor: '#2962FF',
@@ -76,11 +77,11 @@
           });
 
           // 读取kline_data.csv文件中的数据，设置为蜡烛图数据
-          candlestickSeries.setData(window.kline_data);
+          const cline_data = generateCandlestickData();
+          candlestickSeries.setData(cline_data);
 
           chart.timeScale().fitContent();
         </script>
-      </div>
     </main>
 
     <!-- App 底部标签栏 -->

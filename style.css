@@ -18,8 +18,8 @@ html, body {
     height: 100%;
     overflow: hidden; /* 极其重要：禁止外层网页滚动，防止微信/Safari下拉露底 */
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
-    background-color: #f2f2f7; /* 苹果经典的系统背景灰色 */
-    color: #1c1c1e;
+    background-color: #222; 
+    color: #fff;
 }
 
 body {
@@ -33,7 +33,7 @@ body {
 
 /* 顶部状态栏：适配刘海屏、灵动岛 */
 .app-header {
-    background-color: #ffffff;
+    background-color: #222;
     border-bottom: 1px solid #e5e5ea;
     /* 关键：自动留出 iPhone 顶部的安全距离（刘海高度） */
     padding-top: env(safe-area-inset-top); 
@@ -58,7 +58,7 @@ body {
 
 /* 底部标签栏：适配底部小黑条（Home Indicator） */
 .app-footer {
-    background-color: #ffffff;
+    background-color: #222;
     border-top: 1px solid #e5e5ea;
     display: flex;
     justify-content: space-around;
@@ -97,10 +97,10 @@ body {
 .app-btn {
     width: 100%;
     min-height: 44px; /* 满足苹果最低 44x44 像素点击区域的要求 */
-    background-color: #007aff;
+    background-color: #222;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 8px; /* 圆角按钮，符合苹果设计风格 */
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
@@ -111,7 +111,8 @@ body {
 
 /* 确保图表容器有明确的宽高 */
 #chart-container {
+    border-radius: 8px; /* 圆角按钮，符合苹果设计风格 */
     width: 100%;
-    height: 400px;    /* 必须给一个固定的像素高度，比如 400px 或 500px */
+    height: 520px;    /* 必须给一个固定的像素高度，比如 400px 或 500px */
     position: relative;
 }
